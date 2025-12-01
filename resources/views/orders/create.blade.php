@@ -12,6 +12,10 @@
             <label class="form-label">Nomor Meja</label>
             <input name="table_number" type="number" min="1" class="form-control" required>
         </div>
+        <div class="col-md-3">
+            <label class="form-label">Lokasi (opsional)</label>
+            <input name="location" class="form-control" placeholder="e.g. Alamat atau Koordinat">
+        </div>
     </div>
 
     <hr>

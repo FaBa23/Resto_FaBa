@@ -9,16 +9,12 @@ class Menu extends Model
 {
     use HasFactory;
 
+    // Tentukan kolom mana yang bisa diisi secara massal
     protected $fillable = [
-        'name',
         'category',
-        'subcategory',
-        'price',
+        'name',
         'description',
+        'price',
+        'is_top_pick',
     ];
-
-    public function orderItems()
-    {
-        return $this->hasMany(\App\Models\OrderItem::class, 'menu_id');
-    }
 }

@@ -6,25 +6,19 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->enum('category', ['makanan', 'minuman']);
-            $table->decimal('price', 12, 2);
-            $table->text('description')->nullable();
+            $table->string('category'); // Untuk 'Surabi Duren', 'Aneka Minuman', dll.
+            $table->string('name');     // Untuk 'Duren Keju', 'Telur Mayo', dll.
+            $table->text('description')->nullable(); // Untuk deskripsi tambahan
+            $table->integer('price');   // Harga dalam Rupiah (tanpa koma)
+            $table->boolean('is_top_pick')->default(false); // Untuk 'Resto's Top Picks'
             $table->timestamps();
         });
     }
 
-
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('menus');

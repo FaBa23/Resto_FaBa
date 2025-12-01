@@ -1,0 +1,128 @@
+/* Styles for About Us page */
+
+.about-page {
+    font-family: "Poppins", sans-serif;
+    color: #444444;
+}
+
+.about-page .hero-section {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.about-page .hero-section h1 {
+    font-weight: 700;
+    font-size: 3rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.about-page h2 {
+    color: #222222;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.about-page p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: #555555;
+}
+
+.about-page .row.mt-5 h3 {
+    color: #ee7023;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.about-page .row.mt-5 p {
+    color: #777777;
+    font-size: 1rem;
+}
+
+.img-fluid.rounded.shadow {
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+}
+
+.container.py-5 {
+    max-width: 900px;
+}
+
+@media (max-width: 768px) {
+    .about-page .hero-section {
+        height: 250px;
+        font-size: 1.8rem;
+    }
+
+    .about-page h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Section Order Delivery */
+.order-delivery {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.delivery-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px; /* jarak antar logo */
+    margin-top: 20px;
+}
+
+.delivery-wrapper img {
+    width: 130px; /* ukuran logo fix */
+    height: auto;
+    object-fit: contain;
+    display: block;
+    transition: 0.2s ease;
+}
+
+.delivery-wrapper a:hover img {
+    transform: scale(1.08);
+}
+
+.order-delivery h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.delivery-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.delivery-card {
+    background: #ffffff;
+    padding: 18px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+    transition: 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delivery-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.delivery-card img {
+    width: 120px !important;
+    max-width: 120px !important;
+    height: auto !important;
+    object-fit: contain !important;
+    display: block !important;
+}

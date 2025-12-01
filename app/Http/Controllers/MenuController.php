@@ -2,57 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Menu;
 use Illuminate\Http\Request;
+use App\Models\Menu; // Jangan lupa import Model Anda
 
 class MenuController extends Controller
 {
-    public function index()
+    /**
+     * Menampilkan semua item menu, dikelompokkan berdasarkan kategori.
+     */
+    public function fullMenu()
     {
-        $menus = Menu::latest()->paginate(10);
-        return view('menus.index', compact('menus'));
-    }
+        // 1. Ambil semua data menu, diurutkan agar kategori top picks tampil pertama
+        $allMenus = Menu::orderByDesc('is_top_pick')
+            ->orderBy('category')
+            ->get();
 
-    public function create()
-    {
-        return view('menus.create');
-    }
+        // 2. Kelompokkan data berdasarkan kolom 'category'
+        $groupedMenus = $allMenus->groupBy('category');
 
-    public function store(Request $request)
-    {
-        $data = $request->validate([
-            'name' => 'required|string|max:100',
-            'category' => 'required|in:makanan,minuman',
-            'price' => 'required|numeric|min:0',
-            'description' => 'nullable|string'
+        // 3. Kirim data yang sudah dikelompokkan ke view
+        return view('menu', [
+            'groupedMenus' => $groupedMenus
         ]);
-        Menu::create(attributes: $data);
-        return redirect()->route('menus.index')->with('ok', 'Menu ditambahkan.');
-    }
-
-    public function edit(Menu $menu)
-    {
-        return view('menus.edit', compact('menu'));
-    }
-
-    public function update(Request $request, Menu $menu)
-    {
-        $data = $request->validate([
-            'name' => 'required|string|max:100',
-            'category' => 'required|in:makanan,minuman',
-            'price' => 'required|numeric|min:0',
-            'description' => 'nullable|string'
-        ]);
-        $menu->update($data);
-        return redirect()->route('menus.index')->with('ok', 'Menu diperbarui.');
-    }
-
-    public function destroy(Menu $menu)
-    {
-        // Delete related order items first to avoid foreign key constraint violation
-        $menu->orderItems()->delete();
-
-        $menu->delete();
-        return back()->with('ok', 'Menu dihapus.');
     }
 }
